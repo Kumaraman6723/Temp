@@ -1,0 +1,63 @@
+{% include "header.html" %}
+{% from "bootstrap5/form.html" import render_form %}
+
+{% block content %}
+<main class="form-signin w-100 m-auto">
+
+    <form id="signin-form" method="post" novalidate="True">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+        
+        <img class="mb-4 nuke" src="static/assets/nuke.svg" alt="">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+            <div class="alert alert-{{ category }} alert-dismissible fade show " role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <div class="form-floating">
+            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
+            <label for="floatingInput">Email address</label>
+        </div>
+        <div class="mt-2 mb-2 d-flex justify-content-between align-items-center">
+            <p class="mb-0" style="color: #ffffff;"></p>
+            <a href="{{url_for('verify_pass')}}" class="forgot-password-link"style="font-size: 12px;" >Forgot Password?</a>
+         </div>
+
+        <div class="form-floating">
+          <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
+          <label for="floatingPassword">Password</label>
+      </div>
+
+        <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" value="" id="showPasswordCheck">
+            <label class="form-check-label" for="showPasswordCheck" style="color: #a39e9e; font-size: 12px;">
+                Show Password
+            </label>
+        </div>
+
+        <div class="cf-turnstile" data-sitekey="{{ site_key }}"></div>
+      
+        <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
+        
+
+    </form>
+    
+    <div class="divider">
+        <span>OR</span>
+    </div>
+    
+    <div class="hyperlink" id="google-signin" onclick="redirectToGoogleLogin()">
+        <button class="btn btn-google w-100 d-flex align-items-center justify-content-center" type="button">
+            <img src="static/assets/google.svg" alt="Google logo">
+            Sign in with Google
+        </button>
+    </div>
+</main>
+
+
+{% include "footer.html" %}
+{% endblock %}

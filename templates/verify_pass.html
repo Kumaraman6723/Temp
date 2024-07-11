@@ -1,0 +1,38 @@
+{% include "header.html" %}
+
+{% from "bootstrap5/form.html" import render_form %} 
+{% block content %}
+
+<main class="form-signin w-100 m-auto">
+
+    <form method="post" novalidate>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+              {{ message }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+        {{ form.hidden_tag() }}
+        
+        <img class="mb-4 pcb" src="{{ url_for('static', filename='assets/Designer.png') }}" alt="" width="72" height="57" style="border-radius: 50%;">
+        
+        <div class="form-floating"> 
+
+
+            {{ form.email(class="form-control", id="floatingInput", placeholder="name@example.com") }}
+            {{ form.email.label}}
+        </div>
+        <br>
+        
+        {{ form.submit(class="btn btn-primary w-100 py-2") }}
+
+    </form>
+    
+</main>
+
+{% include "footer.html" %}
+{% endblock %}

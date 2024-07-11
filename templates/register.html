@@ -1,0 +1,58 @@
+{% include "header.html" %}
+{% from "bootstrap5/form.html" import render_form %} 
+{% block content %}
+
+<div class="container my-5">
+  <div class="shadow p-3 mb-5 bg-body-tertiary rounded d-flex flex-column flex-md-row justify-content-between align-items-center">
+    <div class="col-md-6 mb-3 mb-md-0">
+      <img src="static/assets/bootstrap-themes.png" alt="Image Description" class="img-fluid logo">
+    </div>
+
+    <main class="mb-4 ms-md-3">
+
+      <div class="container">
+        <div class="row justify-content-end">
+          <div class="col-lg-8 col-md-10">
+            <h2 class="text-primary mb-5">Sign up!</h2>
+            
+            {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                {% for category, message in messages %}
+                  <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+          
+                {% endfor %}
+              {% endif %}
+            {% endwith %}
+
+            <form method="POST" action="{{ url_for('register') }}">
+              {{ form.hidden_tag() }}
+              {{ render_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+              
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var form = document.querySelector('form');
+    form.addEventListener('submit', function(event) {
+        var emailInput = document.querySelector('#email');
+        var emailError = emailInput.nextElementSibling;
+        if (emailError && emailError.textContent.includes('already registered')) {
+            event.preventDefault();
+            alert('This email is already registered. Please use a different email.');
+        }
+    });
+});
+</script>
+
+{% include "footer.html" %}
+{% endblock %}

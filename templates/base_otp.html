@@ -1,0 +1,161 @@
+{% include "header.html" %}
+{% from "bootstrap5/form.html" import render_form %} 
+{% block content %}
+
+<div class="container d-flex flex-column justify-content-center min-vh-100">
+    <div class="row justify-content-center w-100">
+        <div class="col-sm-12 col-md-8 col-lg-6 col-xl-5">
+            <main class="form-signin mx-auto">
+                <form method="post" novalidate>
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                      {% for category, message in messages %}
+                        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                          {{ message }}
+                          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                      {% endfor %}
+                    {% endif %}
+                    {% endwith %}
+
+                    {{ form.hidden_tag() }}
+                    <div class="text-center mb-4">
+                        <img class="mb-3 logo" src="{{ url_for('static', filename='assets/Designer.png') }}" alt="Logo">
+                        <h2 class="mb-3">{% block page_title %}OTP Verification{% endblock %}</h2>
+                    </div>
+                    
+                    {% block form_fields %}
+                    <div class="form-floating mb-3"> 
+                        {{ form.otp(class="form-control", id="floatingInput", placeholder="Enter OTP") }}
+                        {{ form.otp.label}}
+                    </div>
+                    {% endblock %}
+                    
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <small class="text-muted">Expires in: <span id="countdown" class="countdown"></span></small>
+                        <button type="button" class="btn btn-link p-0" id="resendBtn" onclick="resendOTP()" disabled>Resend Code</button>
+                    </div>
+                    
+                    {{ form.submit(class="btn btn-primary w-100 py-2 mb-3") }}
+                    
+                    <div class="text-center mt-3">
+                        <p class="mb-0">Didn't receive the code?</p>
+                        <small class="text-muted">Check your spam folder or contact support if you're having trouble.</small>
+                    </div>
+                </form>
+            </main>
+        </div>
+    </div>
+    <footer class="footer mt-3">
+        {% include "footer.html" %}
+    </footer>
+</div>
+
+<script src="{{ url_for('static', filename='js/otp.js') }}"></script>
+<style>
+html, body {
+    font-family: "Poppins", sans-serif;
+    
+}
+
+.container {
+    padding-bottom: 10px;
+}
+
+.form-signin {
+    width: 100%;
+    max-width: 330px;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
+
+.logo {
+    width: 80px;
+    height: 80px;
+
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 0 auto;
+    display: block;
+    border-radius: 10%;
+}
+
+h2 {
+    color: #333;
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.form-control {
+    border-radius: 4px;
+    border: 1px solid #ced4da;
+    font-size: 18px;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+.form-control:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.countdown {
+    font-weight: bold;
+    color: #dc3545;
+}
+
+#resendBtn {
+    font-size: 0.875rem;
+    text-decoration: none;
+    color: #007bff;
+}
+
+#resendBtn:hover {
+    text-decoration: underline;
+}
+
+#resendBtn:disabled {
+    color: #6c757d;
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    font-weight: 500;
+    transition: background-color 0.2s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.alert {
+    border-radius: 4px;
+    font-size: 0.875rem;
+}
+
+.form-floating {
+    margin-bottom: 5px;
+}
+
+.footer {
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 10px;
+}
+
+@media (max-width: 576px) {
+    .form-signin {
+        padding: 20px;
+    }
+}
+</style>
+{% endblock %}

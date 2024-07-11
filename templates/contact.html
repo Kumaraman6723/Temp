@@ -1,0 +1,76 @@
+{% include "header.html" %}
+
+<style>
+  .form-floating {
+    margin-bottom: 1rem;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .form-container {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .form-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+</style>
+
+
+
+<!-- Main Content-->
+
+  <div class="container px-4 px-lg-5 mar" style="background-color: white;">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+
+        <div class="my-5 contact-form  ">
+          <div class="form-container">
+            {% if msg_sent: %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              <strong>Success!</strong> Your queries has been sent to us!
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <code> <center><h2>CONTACT US </h2></center></code>
+            {% else: %}
+               <code> <center><h2>CONTACT US </h2></center></code>
+              {% endif %}
+                <br>
+                
+            <form id="contactForm" name="sentMessage" action="{{ url_for('contact') }}" method="post">
+              <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+              <div class="form-floating">
+                <input class="form-control" id="name" name="name" type="text" placeholder="Enter your name..." required />
+                <label for="name">Name</label>
+              </div>
+              <div class="form-floating">
+                <input class="form-control" id="email" name="email" type="email" placeholder="Enter your email..." required />
+                <label for="email">Email address</label>
+              </div>
+              <div class="form-floating">
+                <input class="form-control" id="phone" name="phone" type="tel" placeholder="Enter your phone number..." required />
+                <label for="phone">Phone Number</label>
+              </div>
+              <div class="form-floating">
+                <textarea class="form-control" id="message" name="message" placeholder="Enter your message here..." required style="height: 12rem"></textarea>
+                <label for="message">Message</label>
+              </div>
+              <br />
+              <div class="text-center">
+                <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">
+                  Send
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+{% include "footer.html" %}

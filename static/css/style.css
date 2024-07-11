@@ -1,0 +1,183 @@
+html {
+  font-family: "Poppins", sans-serif;
+  background-color: #100323;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #100323;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 1rem;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"],
+.form-signin input[type="text"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.nuke {
+  position: relative;
+  left: 70px;
+  width: 250px;
+  height: 140px;
+}
+
+.pcb {
+  position: relative;
+  left: 70px;
+  width: 250px;
+  height: 140px;
+}
+
+.btn-google {
+  color: #3c4043;
+  background-color: #ffffff;
+  border: 1px solid #dadce0;
+  border-radius: 4px;
+  font-family: 'Google Sans', Roboto, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  padding: 0 12px;
+  transition: background-color 0.218s, border-color 0.218s, box-shadow 0.218s;
+}
+
+.btn-google:hover {
+  background-color: #f7f8f8;
+  border-color: #dadce0;
+  box-shadow: 0 1px 3px 0 rgba(62, 60, 67, 0.3), 0 4px 8px 3px rgba(60, 64, 67, 0.15);
+}
+
+.btn-google:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(10, 96, 234, 0.3);
+}
+
+.btn-google img {
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #ced4da;
+}
+
+.divider span {
+  padding: 0 10px;
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+.btn {
+  transition: transform 0.3s ease-in-out;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+.ani {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 200;
+}
+
+.ani:hover {
+  font-weight: 200;
+  color: #cdeede;
+}
+
+.nav-link {
+  color: #f7f7f7;
+}
+
+.year {
+  color: #f7f7f7;
+}
+
+.mb-4 {
+  width: 50%;
+  height: 50%;
+}
+
+.is-invalid {
+  border-color: #dc3545;
+}
+
+.is-invalid:focus {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+.alert {
+  background-color: #0d1d63;
+  color: rgb(241, 236, 226);
+}
+
+.forgot-password-container {
+  text-align: right;
+  margin-top: 5px;
+}
+
+.forgot-password-link {
+  color: #a0a0a0;
+  font-size: 0.9em;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.forgot-password-link:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.hyperlink:hover {
+  color: #f7f7f7;
+}
+
+.password-container {
+  position: relative;
+}
+
+.form-signin input[type="password"],
+.form-signin input[type="text"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+
+.form-floating{
+
+  margin-bottom: 5px;
+}
+
+
+
+
